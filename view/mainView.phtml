@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <style>
+        <?php require_once 'css/styles.css' ?>
+    </style>
+</head>
+<body>
+    <div class="productos">
+        <?php
+            foreach ($productosRecomendados as $p)
+            {
+                echo "<div class='producto'>";
+                echo "<h3>".$p->name."</h3>";
+                echo "<img src='#'>";
+                echo "<p>".$p->description."</p>";
+                echo "<p>".$p->price."€</p>";
+                echo "<form method='post' action='index.php'>";
+                echo "<input type='hidden' name='id' value='".$p->id."'>";
+                echo "<input type='number' name='cantidad' value='1' min='1'>";
+                echo "<input type='submit' value='Añadir al carrito'>";
+                echo "</div>";
+            }
+        ?>
+    </div>
+    <!-- <div class="Carrito">
+        <button onClick>🛒</button>
+    <div> -->
+    <div class="carrito">
+        <a href="index.php?carrito">🛒</a>
+    </div>
+<?php
+   
+   
+    if (isset($_SESSION['user']))
+   {
+        echo "<h3><a href='index.php?logout=1'>Cerrar sesión</a></h3>";
+        if (($_SESSION['user']->getRol()) > 1)
+        {
+            // Redirigir al modo admin
+            echo "<h3><a href='index.php?admin=1'>Modo admin</a></h3>";
+        }
+   }
+   else
+   {
+        echo "<h3><a href='index.php'>Iniciar sesión</a></h3>";
+   }
+
+?>
+</body>
+</html>

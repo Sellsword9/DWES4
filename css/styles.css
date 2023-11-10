@@ -1,0 +1,26 @@
+:root
+{
+    background-color: #444;
+    color: cadetblue;
+    a {
+        color: #4edebc
+    }
+    a::visited{
+        color: #cf3737
+    }
+}
+
+.carrito a
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2rem;
+    background-color: #4edebc;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 1rem;
+    font-size: 3rem;
+    text-align: center;
+    text-decoration: none !important;
+}
