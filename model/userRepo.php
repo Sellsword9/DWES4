@@ -1,6 +1,7 @@
 <?php
 require_once("db.php");
-class UserRepository{
+class UserRepository
+{
     public static function checkLogin($data)
     {
         return OptionUser::check($data);
@@ -8,10 +9,10 @@ class UserRepository{
 
     public static function getUserById($id)
     {
-        $bd=Conectar::conexion();
-        $q="SELECT * FROM users WHERE id='".$id."'";
-        $result=$bd->query($q);
-        if($datos=$result->fetch_assoc()){
+        $bd = Conectar::conexion();
+        $q = "SELECT * FROM users WHERE id='" . $id . "'";
+        $result = $bd->query($q);
+        if ($datos = $result->fetch_assoc()) {
             return new User($datos);
         }
     }
@@ -19,11 +20,12 @@ class UserRepository{
     public static function register($datos)
     {
         // var_dump("executed");
-        $db=Conectar::conexion();
-        $username=$datos['username'];
-        $password=$datos['password'];
+        $db = Conectar::conexion();
+        $username = $datos['username'];
+        $password = $datos['password'];
         $realPassword = password_hash($password, PASSWORD_DEFAULT);
-        $q="INSERT INTO user (username, password) VALUES ('".$username."', '".$realPassword."')";
+        $q = "INSERT INTO user (username, password) VALUES ('" . $username . "', '" . $realPassword . "')";
         $db->query($q);
+        OrderRepo::createCarrito($db->insert_id);
     }
 }

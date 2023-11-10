@@ -13,10 +13,12 @@ class Order
     $this->status = $data['status'];
   }
 
-  public function addLine($idProduct)
+  public function addLine($data)
   {
+    $idProduct = $data['id'];
+    $quantity = $data['quantity'];
     $db = Conectar::conexion();
-    $q = "INSERT INTO line (id_order, id_product) VALUES ($this->id, $idProduct)";
+    $q = "INSERT INTO line (id_order, id_product, quantity) VALUES ($this->id, $idProduct, $quantity)";
     $db->query($q);
   }
 
