@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  for
+  <?php
+  $user = $_SESSION['user'];
+  if (isset($user) && is_a($user, 'user')) {
+    $carrito = $user->getCarrito();
+    if ($carrito->hasSomething()) {
+      foreach ($carrito->getLines() as $line) {
+        echo "<div class='producto'>";
+        echo "<h3>" . $line->getProduct()->name . "</h3>";
+        echo "<img src='#'>";
+        echo "<p>" . $line->getProduct()->description . "</p>";
+        echo "<p>" . $line->getProduct()->price . "€</p>";
+        echo "<p>" . $line->quantity . "</p>";
+        echo "</div>";
+      }
+    } else {
+      echo "<h3>El carrito está vacío</h3>";
+    }
+  }
+
+  ?>
 </body>
+
 </html>

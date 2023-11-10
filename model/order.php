@@ -33,4 +33,12 @@ class Order
     }
     return $lines;
   }
+  public function hasSomething(): bool
+  {
+    $db = Conectar::conexion();
+    $q = "SELECT count(*) FROM line WHERE id_order = $this->id ";
+    $result = $db->query($q);
+    $data = $result->fetch_assoc();
+    return $data['count(*)'] > 0;
+  }
 }
