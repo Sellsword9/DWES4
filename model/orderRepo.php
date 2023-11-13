@@ -7,7 +7,7 @@ class OrderRepo
   public static function createCarrito($idUser): void
   {
     $db = Conectar::conexion();
-    $q = "INSERT INTO orders (user_id, status) VALUES ($idUser, 0)";
+    $q = "INSERT INTO orders (id_user, status) VALUES ($idUser, 0)";
     $db->query($q);
   }
 
@@ -23,7 +23,8 @@ class OrderRepo
   public static function currentOrder($idUser): Order
   {
     $db = Conectar::conexion();
-    $q = "SELECT * FROM order WHERE user_id = $idUser AND status = 0";
+    $q = "SELECT * FROM orders WHERE (id_user = '$idUser' AND status = 0)";
+    var_dump($q);
     $result = $db->query($q);
     $data = $result->fetch_assoc();
     return  new Order($data);

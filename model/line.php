@@ -14,4 +14,12 @@ class Line
     $this->id_product = $data['id_product'];
     $this->quantity = $data['quantity'];
   }
+  public function getProduct()
+  {
+    $db = Conectar::conexion();
+    $q = "SELECT * FROM product WHERE id = $this->id_product";
+    $result = $db->query($q);
+    $data = $result->fetch_assoc();
+    return new Product($data);
+  }
 }

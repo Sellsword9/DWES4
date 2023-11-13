@@ -1,5 +1,5 @@
 <?php
-
+require_once("model/lineRepo.php");
 class Order
 {
   public $id;
@@ -15,11 +15,10 @@ class Order
 
   public function addLine($data)
   {
-    $idProduct = $data['id'];
-    $quantity = $data['quantity'];
-    $db = Conectar::conexion();
-    $q = "INSERT INTO line (id_order, id_product, quantity) VALUES ($this->id, $idProduct, $quantity)";
-    $db->query($q);
+    LineRepo::addLine($this->id, $data);
+    // echo "<pre>";
+    // var_dump($q);
+    // echo "</pre>";
   }
 
   public function getLines()
@@ -36,7 +35,7 @@ class Order
   public function hasSomething(): bool
   {
     $db = Conectar::conexion();
-    $q = "SELECT count(*) FROM line WHERE id_order = $this->id ";
+    $q = "SELECT count(*) FROM line WHERE id_order = '$this->id' ";
     $result = $db->query($q);
     $data = $result->fetch_assoc();
     return $data['count(*)'] > 0;

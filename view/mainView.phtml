@@ -19,10 +19,11 @@
             echo "<img src='#'>";
             echo "<p>" . $p->description . "</p>";
             echo "<p>" . $p->price . "€</p>";
-            echo "<form method='post' action='index.php'>";
-            echo "<input type='hidden' name='id' value='" . $p->id . "'>";
+            echo "<form method='POST' action='index.php'>";
+            echo "<input type='hidden' name='id_product' value='" . $p->id . "'>";
             echo "<input type='number' name='quantity' value='1' min='1'>";
             echo "<input type='submit' value='Añadir al carrito'>";
+            echo "</form>";
             echo "</div>";
         }
         ?>
