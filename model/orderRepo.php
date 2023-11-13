@@ -27,6 +27,6 @@ class OrderRepo
     var_dump($q);
     $result = $db->query($q);
     $data = $result->fetch_assoc();
-    return  new Order($data);
+    return new Order($data);
   }
 }

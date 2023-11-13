@@ -5,6 +5,11 @@ require_once("model/user.php");
 require_once("model/optionUser.php");
 require_once("model/product.php");
 session_start();
+if (isset($_GET['accessCarrito'])) {
+    $user = $_SESSION['user'];
+    require_once("controller/apiController.php");
+    die();
+}
 if (isset($_GET['logout'])) {
     session_destroy();
     header("Location: index.php");

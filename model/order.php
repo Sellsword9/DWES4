@@ -12,7 +12,10 @@ class Order
     $this->user_id = $data['user_id'];
     $this->status = $data['status'];
   }
-
+  public function getId()
+  {
+    return $this->id;
+  }
   public function addLine($data)
   {
     LineRepo::addLine($this->id, $data);

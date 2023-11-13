@@ -2,10 +2,10 @@
 
 class Line
 {
-  public $id;
-  public $id_order;
-  public $id_product;
-  public $quantity;
+  private $id;
+  private $id_order;
+  private $id_product;
+  private $quantity;
 
   public function __construct($data)
   {
@@ -21,5 +21,21 @@ class Line
     $result = $db->query($q);
     $data = $result->fetch_assoc();
     return new Product($data);
+  }
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function getIdOrder()
+  {
+    return $this->id_order;
+  }
+  public function getIdProduct()
+  {
+    return $this->id_product;
+  }
+  public function getQuantity()
+  {
+    return $this->quantity;
   }
 }
