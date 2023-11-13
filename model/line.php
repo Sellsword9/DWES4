@@ -2,10 +2,10 @@
 
 class Line
 {
-  private $id;
-  private $id_order;
-  private $id_product;
-  private $quantity;
+  public $id;
+  public $id_order;
+  public $id_product;
+  public $quantity;
 
   public function __construct($data)
   {

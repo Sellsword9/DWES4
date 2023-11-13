@@ -3,8 +3,8 @@ require_once("order.php");
 require_once("orderRepo.php");
 class User
 {
-    private $id, $username, $rol;
-    private $carrito; // Order con status 0
+    public $id, $username, $rol;
+    public $carrito; // Order con status 0
     public function __construct($datos)
     {
         $this->id = $datos['id'];

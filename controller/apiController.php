@@ -13,7 +13,7 @@ if (isset($_SESSION['user'])) {
 function prepararCarrito($c)
 {
   $carrito = [];
-  $carrito = ["idCarrito" => $c->getId()];
+  $carrito = ["id" => $c->getId()];
   foreach ($c->getLines() as $line) {
     $carrito[] = [
       "id" => $line->getId(),
